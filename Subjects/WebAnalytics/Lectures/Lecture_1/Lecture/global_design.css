@@ -44,6 +44,7 @@ body {
     padding: 60px;
     width: 1000px;
     height: 562px;
+    /* الارتفاع الثابت للشرائح العادية */
     position: relative;
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
     display: flex;
@@ -51,10 +52,16 @@ body {
     justify-content: center;
 }
 
+/* الحل السحري للشريحة التفاعلية (الشريحة 5) */
 .slide-expandable {
-    height: auto;
+    height: max-content !important;
+    /* إجبار الصندوق على التمدد حسب المحتوى */
     min-height: 562px;
     justify-content: flex-start;
+    padding-bottom: 90px !important;
+    /* مساحة إضافية بالأسفل لكي لا يختفي العداد */
+    transition: all 0.3s ease;
+    /* حركة ناعمة عند التمدد */
 }
 
 .slide-counter {

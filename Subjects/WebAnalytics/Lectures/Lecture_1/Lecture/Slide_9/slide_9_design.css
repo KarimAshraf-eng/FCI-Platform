@@ -1,0 +1,291 @@
+/* ========================================= */
+/* تصميم الشريحة 9 (المخطط الانسيابي لأنواع البيانات) */
+/* ========================================= */
+.types-slide {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    direction: ltr;
+}
+
+/* العنوان */
+.types-main-title {
+    color: #f59e0b;
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+    margin-left: 20px;
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+/* حاوية المخطط */
+.flowchart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+    padding-left: 20px;
+}
+
+/* تصميم الفرع الواحد (صف كامل) */
+.flow-branch {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+/* الصناديق الرئيسية (الكمية والنوعية) */
+.main-node {
+    padding: 25px 30px;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 260px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-node h3 {
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 8px;
+    font-weight: 800;
+}
+
+.main-node span {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    font-weight: 500;
+}
+
+.node-blue {
+    background: linear-gradient(135deg, #0d6efd 0%, #00c6ff 100%);
+    border: 2px solid #00c6ff;
+}
+
+.node-purple {
+    background: linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+    border: 2px solid #d946ef;
+}
+
+/* الأسهم */
+.flow-arrows {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 160px;
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.blue-branch .flow-arrows {
+    color: #00c6ff;
+}
+
+.purple-branch .flow-arrows {
+    color: #d946ef;
+}
+
+/* الصناديق الفرعية (متقطعة، مستمرة، الخ) */
+.sub-nodes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sub-node-group {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.sub-node {
+    padding: 15px 25px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sub-node h4 {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.sub-node span {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+}
+
+.node-light-blue {
+    background: rgba(0, 198, 255, 0.15);
+    border: 1px solid #00c6ff;
+}
+
+.node-light-purple {
+    background: rgba(217, 70, 239, 0.15);
+    border: 1px solid #d946ef;
+}
+
+/* قائمة الأمثلة بجانب الصناديق الفرعية */
+.example-list-flow {
+    list-style: disc;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.example-list-flow li {
+    color: #e2e8f0;
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+.blue-branch .example-list-flow li::marker {
+    color: #00c6ff;
+    font-size: 1.5rem;
+}
+
+.purple-branch .example-list-flow li::marker {
+    color: #d946ef;
+    font-size: 1.5rem;
+}
+
+/* ========================================= */
+/* الأزرار التفاعلية واللوحات (Panels) */
+/* ========================================= */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    direction: rtl;
+    margin-top: 20px;
+}
+
+.action-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-blue {
+    border-color: #00c6ff;
+    color: #00c6ff;
+}
+
+.btn-blue:hover,
+.btn-blue.active-btn {
+    background: #00c6ff;
+    color: #000;
+}
+
+.btn-orange {
+    border-color: #f59e0b;
+    color: #f59e0b;
+}
+
+.btn-orange:hover,
+.btn-orange.active-btn {
+    background: #f59e0b;
+    color: #000;
+}
+
+.info-panel {
+    display: none;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    padding: 30px;
+    direction: rtl;
+    animation: fadeIn 0.4s ease;
+    text-align: right;
+}
+
+.info-panel.show-panel {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.panel-blue {
+    background: rgba(0, 198, 255, 0.05);
+    border: 1px solid rgba(0, 198, 255, 0.3);
+}
+
+.panel-blue h3 {
+    color: #00c6ff;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.panel-orange {
+    background: rgba(245, 158, 11, 0.05);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.panel-orange h3 {
+    color: #f59e0b;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.info-panel p {
+    font-size: 1.3rem;
+    color: #e2e8f0;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.info-panel ul.example-list {
+    margin-right: 25px;
+    margin-bottom: 20px;
+}
+
+.info-panel ul.example-list li {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.info-panel ul.example-list li ul {
+    margin-right: 20px;
+    margin-top: 10px;
+}

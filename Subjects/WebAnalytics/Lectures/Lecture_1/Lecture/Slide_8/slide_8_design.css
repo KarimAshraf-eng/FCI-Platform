@@ -1,0 +1,248 @@
+/* ========================================= */
+/* تصميم الشريحة الثامنة (البيانات في العالم) */
+/* ========================================= */
+.data-chart-slide {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    direction: ltr;
+}
+
+.chart-main-title {
+    color: #f59e0b;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+/* تقسيم الشريحة إلى عمودين */
+.chart-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    gap: 20px;
+}
+
+/* العمود الأيسر (النصوص والقوائم) */
+.chart-text-col {
+    flex: 0.8;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.data-type-group h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.data-list {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.data-list li {
+    font-size: 1.4rem;
+    color: #e2e8f0;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.data-list li::before {
+    content: '•';
+    position: absolute;
+    left: -20px;
+    font-size: 2rem;
+    line-height: 1.2rem;
+}
+
+/* ألوان النقاط المخصصة لتطابق الرسم البياني */
+.structured-list li::before {
+    color: #00c6ff;
+}
+
+.unstructured-list li::before {
+    color: #0055ff;
+}
+
+/* العمود الأيمن (الرسم البياني) */
+.chart-visual-col {
+    flex: 1.2;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.svg-chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    height: 320px;
+}
+
+/* ========================================= */
+/* رسم الـ SVG للمنحنى */
+/* ========================================= */
+.curve-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.unstructured-path {
+    fill: #0055ff;
+    /* أزرق داكن قوي */
+}
+
+.structured-path {
+    fill: rgba(0, 198, 255, 0.2);
+    /* أزرق فاتح نيون شبه شفاف */
+}
+
+.axis-line {
+    stroke: #475569;
+    stroke-width: 2px;
+}
+
+/* ========================================= */
+/* النصوص والمؤشرات فوق الرسم (Labels) */
+/* ========================================= */
+.chart-labels {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* 180 Zettabytes */
+.label-180z {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    color: #00c6ff;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+/* 80% Unstructured */
+.label-80percent {
+    position: absolute;
+    left: 80px;
+    top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.percent-text {
+    color: #e2e8f0;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    pointer-events: auto;
+}
+
+.vertical-line-80 {
+    width: 1px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.3);
+    margin-right: 5px;
+}
+
+.square-dot {
+    width: 8px;
+    height: 8px;
+    background: #0055ff;
+    margin-right: 1px;
+}
+
+/* We are here */
+.label-we-are-here {
+    position: absolute;
+    left: 320px;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.we-here-text {
+    color: #00c6ff;
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    pointer-events: auto;
+}
+
+.vertical-line-here {
+    width: 1px;
+    height: 125px;
+    background: rgba(0, 198, 255, 0.5);
+}
+
+.circle-dot {
+    width: 8px;
+    height: 8px;
+    background: #00c6ff;
+    border-radius: 50%;
+    margin-top: -4px;
+    box-shadow: 0 0 10px #00c6ff;
+}
+
+/* التواريخ على المحور */
+.axis-labels {
+    position: absolute;
+    bottom: -5px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 45px;
+    color: #00c6ff;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* مفتاح الرسم (Legend) */
+.chart-legend {
+    position: absolute;
+    right: -120px;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    color: #cbd5e1;
+}
+
+.legend-color {
+    width: 25px;
+    height: 4px;
+}
+
+.unstructured-color {
+    background: #0055ff;
+}
+
+.structured-color {
+    background: rgba(0, 198, 255, 0.6);
+}
+
+/* دعم الترجمة فوق الرسم */
+.percent-text.active-text,
+.we-here-text.active-text {
+    color: #f59e0b !important;
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}

@@ -1,0 +1,65 @@
+/* ========================================= */
+/* تصميم الشريحة العاشرة (النفط الجديد) */
+/* ========================================= */
+.oil-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* توسيط المحتوى بالكامل في منتصف الشريحة */
+    height: 100%;
+    width: 100%;
+}
+
+/* شريط المتصفح العملاق */
+.oil-browser-bar {
+    width: 80%;
+    /* عرض الشريط ليتناسب مع حجم النص */
+    height: 50px;
+    background: #0f2c4d;
+    /* لون أزرق داكن */
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    gap: 12px;
+    margin-bottom: 60px;
+    /* مسافة بين الشريط والنص */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.oil-browser-bar .dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+}
+
+.oil-browser-bar .red {
+    background: #ff4757;
+}
+
+.oil-browser-bar .yellow {
+    background: #f59e0b;
+}
+
+.oil-browser-bar .blue {
+    background: #00c6ff;
+}
+
+/* النص الرئيسي العملاق */
+.oil-title {
+    color: #e2e8f0;
+    /* لون أبيض مائل للرمادي ليكون مريحاً للعين */
+    font-size: 6.5rem;
+    /* حجم خط عملاق جداً */
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.3;
+    letter-spacing: 2px;
+}
+
+/* تأثير التوهج للكلمات عند تحديدها للترجمة */
+.oil-title.active-text {
+    color: #00c6ff !important;
+    text-shadow: 0 0 30px rgba(0, 198, 255, 0.5);
+}

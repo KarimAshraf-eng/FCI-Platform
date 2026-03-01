@@ -11,7 +11,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         'Slide_3/slide_3_page.html',
         'Slide_4/slide_4_page.html',
         'Slide_5/slide_5_page.html',
-        'Slide_6/slide_6_page.html'
+        'Slide_6/slide_6_page.html',
+        'Slide_7/slide_7_page.html',
+        'Slide_8/slide_8_page.html',
+        'Slide_9/slide_9_page.html',
+        'Slide_10/slide_10_page.html',
     ];
 
     // جلب الشرائح واحدة تلو الأخرى لضمان الترتيب
