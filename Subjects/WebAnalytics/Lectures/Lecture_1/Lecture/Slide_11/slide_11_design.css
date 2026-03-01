@@ -1,0 +1,181 @@
+/* ========================================= */
+/* تصميم الشريحة 11 (التحليل واتخاذ القرار) */
+/* ========================================= */
+.analysis-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 0 40px;
+}
+
+.analysis-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+/* تنسيق النص العملاق */
+.analysis-text h1 {
+    color: #f59e0b;
+    font-size: 5.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    text-align: left;
+    text-transform: none;
+    margin: 0;
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+/* ========================================= */
+/* رسم الشخصية بالـ CSS (The Business Man) */
+/* ========================================= */
+.analysis-character {
+    position: relative;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.man-css {
+    position: relative;
+    width: 150px;
+    height: 350px;
+}
+
+/* الرأس */
+.man-head {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45px;
+    height: 55px;
+    background: #ffdbac;
+    border-radius: 50% 50% 45% 45%;
+    z-index: 5;
+}
+
+.man-head::after {
+    /* الشعر */
+    content: '';
+    position: absolute;
+    top: -5px;
+    width: 100%;
+    height: 25px;
+    background: #2c3e50;
+    border-radius: 20px 20px 0 0;
+}
+
+/* الجسم والبدلة */
+.man-body {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 120px;
+    background: #2980b9;
+    /* لون الجاكيت */
+    border-radius: 15px 15px 5px 5px;
+    z-index: 3;
+}
+
+/* القميص والكرافتة */
+.shirt-tie {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 100%;
+    background: #ecf0f1;
+}
+
+.shirt-tie::after {
+    /* الكرافتة */
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 60px;
+    background: #e67e22;
+    clip-path: polygon(50% 0%, 100% 20%, 100% 80%, 50% 100%, 0% 80%, 0% 20%);
+}
+
+/* الأذرع المتشابكة */
+.arms-crossed {
+    position: absolute;
+    top: 30px;
+    left: -10px;
+    width: 100px;
+    height: 40px;
+    background: #3498db;
+    border-radius: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* الأرجل */
+.man-legs {
+    position: absolute;
+    top: 175px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leg {
+    width: 28px;
+    height: 100%;
+    background: #1a252f;
+    border-radius: 0 0 5px 5px;
+}
+
+.leg::after {
+    /* الحذاء */
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    width: 35px;
+    height: 12px;
+    background: #000;
+    border-radius: 5px 10px 2px 2px;
+}
+
+.leg.right::after {
+    right: -5px;
+}
+
+.leg.left::after {
+    left: -5px;
+    transform: scaleX(-1);
+}
+
+/* الظل أسفل الشخصية */
+.man-shadow {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 20px;
+    background: rgba(0, 198, 255, 0.1);
+    border-radius: 50%;
+    filter: blur(5px);
+}
+
+/* التفاعل مع الترجمة */
+.analysis-text h1.active-text {
+    color: #f59e0b !important;
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+}

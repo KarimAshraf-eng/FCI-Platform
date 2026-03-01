@@ -1,0 +1,141 @@
+/* تنسيق الشريحة 12 المطور */
+.roadmap-v2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.roadmap-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    /* فصل النص عن الرسم تماماً */
+    gap: 50px;
+    align-items: center;
+    padding: 20px 0;
+}
+
+/* قسم النصوص */
+.roadmap-text {
+    text-align: left;
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+.roadmap-title {
+    color: #f59e0b;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.roadmap-info p {
+    font-size: 1.25rem;
+    color: #e2e8f0;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* قسم الرسم البياني */
+.roadmap-graphic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.graph-wrapper {
+    position: relative;
+    width: 450px;
+    height: 350px;
+    border-left: 2px solid #64748b;
+    border-bottom: 2px solid #64748b;
+}
+
+/* المحاور */
+.y-axis {
+    position: absolute;
+    left: -130px;
+    top: 50%;
+    transform: rotate(-90deg) translateY(-50%);
+    width: 250px;
+    text-align: center;
+}
+
+.y-label,
+.x-label {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.x-axis {
+    position: absolute;
+    bottom: -35px;
+    width: 100%;
+    text-align: center;
+}
+
+/* الدوائر وتوزيعها المائل */
+.nodes-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.circle-node {
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #0f172a;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    line-height: 1.2;
+    transition: transform 0.3s ease;
+}
+
+/* الألوان والأماكن (لتحاكي الصورة تماماً) */
+.c1 {
+    background: #bae6fd;
+    left: 15px;
+    bottom: 15px;
+}
+
+.c2 {
+    background: #dcfce7;
+    left: 120px;
+    bottom: 100px;
+}
+
+.c3 {
+    background: #f3e8ff;
+    left: 225px;
+    bottom: 185px;
+}
+
+.c4 {
+    background: #ffe4e6;
+    left: 330px;
+    bottom: 270px;
+}
+
+/* تأثير الترجمة */
+.circle-node.active-text {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00c6ff;
+    border: 2px solid #fff;
+}
+
+/* الأزرار التفاعلية */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    margin-top: 20px;
+}

@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         'Slide_8/slide_8_page.html',
         'Slide_9/slide_9_page.html',
         'Slide_10/slide_10_page.html',
+        'Slide_11/slide_11_page.html',
+        'Slide_12/slide_12_page.html',
     ];
 
     // جلب الشرائح واحدة تلو الأخرى لضمان الترتيب

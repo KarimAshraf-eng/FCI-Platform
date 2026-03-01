@@ -1,6 +1,12 @@
 /* ========================================= */
 /* تصميم الشريحة الثامنة (البيانات في العالم) */
 /* ========================================= */
+
+:root {
+    /* قيمة سالبة = تحريك لليسار (تم زيادتها) */
+    --chart-shift: -14%;
+}
+
 .data-chart-slide {
     display: flex;
     flex-direction: column;
@@ -59,7 +65,7 @@
     line-height: 1.2rem;
 }
 
-/* ألوان النقاط المخصصة لتطابق الرسم البياني */
+/* ألوان النقاط */
 .structured-list li::before {
     color: #00c6ff;
 }
@@ -77,16 +83,25 @@
     justify-content: flex-end;
 }
 
+/* ========================================= */
+/* حاوية الرسم بعد زيادة الإزاحة */
+/* ========================================= */
+
 .svg-chart-container {
     position: relative;
     width: 100%;
     max-width: 550px;
     height: 320px;
+
+    transform: translateX(var(--chart-shift));
+    transform-origin: left center;
+    transition: transform 0.3s ease;
 }
 
 /* ========================================= */
 /* رسم الـ SVG للمنحنى */
 /* ========================================= */
+
 .curve-svg {
     width: 100%;
     height: 100%;
@@ -95,12 +110,10 @@
 
 .unstructured-path {
     fill: #0055ff;
-    /* أزرق داكن قوي */
 }
 
 .structured-path {
     fill: rgba(0, 198, 255, 0.2);
-    /* أزرق فاتح نيون شبه شفاف */
 }
 
 .axis-line {
@@ -111,6 +124,7 @@
 /* ========================================= */
 /* النصوص والمؤشرات فوق الرسم (Labels) */
 /* ========================================= */
+
 .chart-labels {
     position: absolute;
     top: 0;
@@ -245,4 +259,17 @@
 .we-here-text.active-text {
     color: #f59e0b !important;
     text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 900px) {
+    :root {
+        --chart-shift: -8%;
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --chart-shift: 0%;
+    }
 }
