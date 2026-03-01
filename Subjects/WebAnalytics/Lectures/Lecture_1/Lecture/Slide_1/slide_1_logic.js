@@ -1,30 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // منع قائمة كليك يمين نهائياً
     document.addEventListener('contextmenu', event => event.preventDefault());
 
-    // الأزرار التفاعلية
-    const actionBtns = document.querySelectorAll('.action-btn');
-    actionBtns.forEach(btn => {
-        btn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            const targetId = this.getAttribute('data-target');
-            const parentSlide = this.closest('.slide-box');
-
-            parentSlide.querySelectorAll('.info-panel').forEach(panel => {
-                if (panel.id !== targetId) panel.classList.remove('show-panel');
-            });
-
-            parentSlide.querySelectorAll('.action-btn').forEach(b => {
-                if (b !== this) b.classList.remove('active-btn');
-            });
-
-            const targetPanel = document.getElementById(targetId);
-            targetPanel.classList.toggle('show-panel');
-            this.classList.toggle('active-btn');
-        });
-    });
-
-    // الترجمة
     const bubble = document.getElementById('tooltip');
     let activeEl = null;
     let pressTimer;
@@ -72,10 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('touchstart', (e) => {
-        if (!e.target.classList.contains('translatable') && !e.target.closest('.action-btn')) handleHide();
+        if (!e.target.classList.contains('translatable')) handleHide();
     }, { passive: true });
 
     document.addEventListener('mousedown', (e) => {
-        if (!e.target.classList.contains('translatable') && !e.target.closest('.action-btn')) handleHide();
+        if (!e.target.classList.contains('translatable')) handleHide();
     });
 });
