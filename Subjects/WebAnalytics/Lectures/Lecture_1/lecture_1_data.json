@@ -23,8 +23,8 @@
         "name_ar": "الملخص",
         "icon": "fa-solid fa-list-check",
         "description": "خلاصة محتويات المحاضرة باللغة الإنجليزية مع خاصية الترجمة الذكية.",
-        "folder_path": "Summary/index.html",
-        "is_active": false
+        "folder_path": "Summary/summary_page.html",
+        "is_active": true
     },
     {
         "id": 4,

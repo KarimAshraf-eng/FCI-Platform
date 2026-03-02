@@ -1,0 +1,142 @@
+/* ========================================= */
+/* تصميم الشريحة 19 - فاصل أهداف التعلم (Strict 880px) */
+/* ========================================= */
+.slide-19-divider-pro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 880px; /* العرض الثابت لمنع التشوه */
+    height: 100%;
+    margin: 0 auto;
+    direction: ltr; /* اتجاه إنجليزي صارم */
+    -webkit-text-size-adjust: 100%;
+}
+
+.divider-layout-19 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 120px; /* مسافة متوازنة بين الرسم والنص */
+}
+
+/* ========================================= */
+/* الجانب الأيمن: المربع البرتقالي والنص */
+/* ========================================= */
+.text-side-19 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.number-block-03 {
+    width: 150px;
+    height: 150px;
+    background-color: #f59e0b; /* اللون البرتقالي المطابق للصورة */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 5.5rem;
+    font-weight: 900;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(245, 158, 11, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.number-block-03:hover {
+    transform: translateY(-5px);
+}
+
+.divider-title-19 {
+    color: #f59e0b;
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* التفاعل مع الترجمة */
+.divider-title-19.active-text {
+    color: #00c6ff !important;
+    text-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
+}
+
+/* ========================================= */
+/* الجانب الأيسر: التكوين الفني (Illustration) */
+/* ========================================= */
+.art-side-19 {
+    position: relative;
+    width: 300px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.target-composition {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* أيقونة الهدف (الدوائر الزرقاء) */
+.main-target {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 11rem;
+    color: #00c6ff;
+    filter: drop-shadow(0 10px 20px rgba(0, 198, 255, 0.3));
+    z-index: 1;
+}
+
+/* السهم الذي يضرب الهدف */
+.target-arrow {
+    position: absolute;
+    top: 40px;
+    left: 140px;
+    font-size: 4rem;
+    color: #1e293b;
+    transform: rotate(45deg);
+    z-index: 2;
+    filter: drop-shadow(-5px 5px 5px rgba(0,0,0,0.4));
+}
+
+/* اللابتوب (تمثيل الشخص الذي يتعلم) */
+.floating-learner {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    z-index: 3;
+    animation: floatAnimation 4s ease-in-out infinite;
+}
+
+.floating-learner i {
+    font-size: 6rem;
+    color: #f59e0b; /* لابتوب بلون برتقالي ليوازن الألوان */
+    filter: drop-shadow(0 15px 15px rgba(0,0,0,0.5));
+}
+
+.glow-effect {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 15px;
+    background: rgba(0, 198, 255, 0.4);
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+/* حركة الطفو (Floating animation) للأيقونة */
+@keyframes floatAnimation {
+    0% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-15px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(-5deg); }
+}

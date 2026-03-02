@@ -1,0 +1,122 @@
+/* ========================================= */
+/* تصميم الشريحة 21 - جدول المقرر (Strict 880px) */
+/* ========================================= */
+.schedule-pro-slide {
+    display: flex;
+    flex-direction: column;
+    width: 880px; /* العرض الثابت لمنع التشوه */
+    margin: 0 auto;
+    direction: ltr; /* الترتيب الإنجليزي الصارم للجدول */
+    -webkit-text-size-adjust: 100%;
+    padding-top: 10px;
+}
+
+.center-title {
+    color: #f59e0b;
+    font-size: 3.2rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+/* ========================================= */
+/* تصميم الجدول الاحترافي */
+/* ========================================= */
+.table-container {
+    width: 100%;
+    background: rgba(17, 24, 39, 0.6);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden; /* لحواف دائرية ناعمة حول الجدول */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.pro-schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.05rem; /* حجم خط مناسب ليستوعب 14 صفاً بدون سكرول */
+}
+
+/* تخطيط الأعمدة */
+.col-week { width: 10%; }
+.col-topic { width: 45%; }
+.col-methods { width: 45%; }
+
+/* رأس الجدول */
+.pro-schedule-table th {
+    background-color: rgba(0, 198, 255, 0.15);
+    color: #00c6ff;
+    font-weight: 800;
+    text-align: left;
+    padding: 14px 15px;
+    border-bottom: 2px solid #00c6ff;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.pro-schedule-table th.col-week {
+    text-align: center;
+}
+
+/* خلايا الجدول (الصفوف) */
+.pro-schedule-table td {
+    padding: 11px 15px;
+    color: #cbd5e1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+    transition: background 0.3s ease;
+}
+
+.pro-schedule-table td:last-child {
+    border-right: none;
+}
+
+/* تأثير التظليل المتبادل (Zebra Striping) لسهولة القراءة */
+.pro-schedule-table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* تأثير مرور الماوس (Hover) */
+.pro-schedule-table tbody tr:hover {
+    background-color: rgba(0, 198, 255, 0.05);
+}
+
+/* تنسيقات نصية خاصة */
+.center-text {
+    text-align: center !important;
+}
+
+.pro-schedule-table td:first-child {
+    color: #00c6ff; /* لون مميز لرقم الأسبوع */
+    font-weight: 800;
+}
+
+/* ========================================= */
+/* صفوف الامتحانات (الميدتيرم والنهائي) */
+/* ========================================= */
+.exam-row {
+    background-color: rgba(245, 158, 11, 0.1) !important;
+}
+
+.exam-row:hover {
+    background-color: rgba(245, 158, 11, 0.15) !important;
+}
+
+.exam-row td {
+    color: #f59e0b !important;
+    font-size: 1.2rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ========================================= */
+/* تأثير الترجمة على الكلمات */
+/* ========================================= */
+.active-text {
+    color: #f59e0b !important;
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}

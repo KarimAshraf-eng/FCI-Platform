@@ -1,0 +1,131 @@
+/* ========================================= */
+/* تصميم الشريحة 17 - فاصل الأقسام (Strict 880px) */
+/* ========================================= */
+.section-divider-pro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 880px; /* عرض ثابت لمنع التشوه على الموبايل */
+    height: 100%;
+    margin: 0 auto;
+    direction: ltr; /* اتجاه إنجليزي صارم */
+    -webkit-text-size-adjust: 100%;
+}
+
+.divider-layout {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+/* ========================================= */
+/* الجانب الأيسر: المربع البرتقالي والنص */
+/* ========================================= */
+.divider-text-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.number-block-v2 {
+    width: 160px;
+    height: 160px;
+    background-color: #f59e0b; /* اللون البرتقالي المطابق للصورة */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-size: 5.5rem;
+    font-weight: 900;
+    border-radius: 8px; /* حواف دائرية خفيفة جداً */
+    box-shadow: 0 15px 35px rgba(245, 158, 11, 0.4);
+}
+
+.divider-title {
+    color: #f59e0b;
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* التفاعل مع الترجمة */
+.divider-title.active-text {
+    color: #00c6ff !important;
+    text-shadow: 0 0 15px rgba(0, 198, 255, 0.6);
+}
+
+/* ========================================= */
+/* الجانب الأيمن: التكوين الفني (Illustration) */
+/* ========================================= */
+.divider-art-side {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.art-composition {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* الكرة الأرضية في الخلفية */
+.background-globe {
+    position: absolute;
+    right: 30px;
+    top: 50px;
+    font-size: 14rem;
+    color: rgba(0, 198, 255, 0.15); /* لون أزرق خفيف جداً */
+    z-index: 1;
+}
+
+/* علامة التعجب البرتقالية */
+.main-warning {
+    position: relative;
+    font-size: 14rem;
+    color: #f59e0b;
+    z-index: 2;
+    filter: drop-shadow(0 15px 20px rgba(0,0,0,0.4));
+}
+
+/* الأيقونات العائمة لتحاكي تفاصيل الصورة */
+.floating-icons i {
+    position: absolute;
+    color: #00c6ff;
+    font-size: 2.5rem;
+    z-index: 3;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+}
+
+.top-left {
+    top: 60px;
+    left: 40px;
+}
+
+.bottom-left {
+    bottom: 50px;
+    left: 60px;
+    color: #e2e8f0 !important; /* لون فضي للعدسة المكبرة */
+}
+
+.bottom-right {
+    bottom: 60px;
+    right: 40px;
+}
+
+.top-right {
+    top: 30px;
+    right: 120px;
+    color: #f59e0b !important; /* صاعقة برتقالية */
+    font-size: 3.5rem !important;
+}
