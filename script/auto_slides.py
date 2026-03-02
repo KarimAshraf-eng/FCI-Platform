@@ -6,25 +6,27 @@ import re
 # مسار مجلد المحاضرة الأساسي
 LECTURE_FOLDER = r"D:\My Work\FCI-Platform\Subjects\WebAnalytics\Lectures\Lecture_1\Lecture"
 
-def get_next_slide_number(lecture_dir):
-    """دالة لمعرفة رقم الشريحة الجديد اللي عليه الدور"""
+def get_current_target_number(lecture_dir):
+    """دالة ذكية: بتجيب دايماً الرقم اللي المفروض نشتغل عليه دلوقتي"""
     max_num = 0
     if not os.path.exists(lecture_dir):
         os.makedirs(lecture_dir)
         return 1
         
-    for folder_name in os.listdir(lecture_dir):
-        if folder_name.startswith("Slide_"):
-            try:
-                num = int(folder_name.split("_")[1])
-                if num > max_num:
-                    max_num = num
-            except ValueError:
-                pass
-    return max_num + 1
-
-# تحديد رقم الشريحة الحالية عند تشغيل السكربت
-current_slide = get_next_slide_number(LECTURE_FOLDER)
+    folders = [f for f in os.listdir(lecture_dir) if f.startswith("Slide_")]
+    if not folders:
+        return 1
+        
+    for folder_name in folders:
+        try:
+            num = int(folder_name.split("_")[1])
+            if num > max_num:
+                max_num = num
+        except (ValueError, IndexError):
+            pass
+    
+    # هنا الفكرة: السكربت بيشوف آخر رقم موجود فعلاً في المجلدات ويشتغل عليه
+    return max_num
 
 def clean_code(text, lang):
     """تنظيف الكود من علامات النسخ الخاصة بـ Gemini"""
@@ -32,65 +34,60 @@ def clean_code(text, lang):
     text = re.sub(r"```", "", text)
     return text.strip()
 
-def ensure_folder_exists(slide_num):
-    folder = os.path.join(LECTURE_FOLDER, f"Slide_{slide_num}")
+def get_paths():
+    """بتجيب المسارات الصحيحة بناءً على الوضع الحالي للمجلدات"""
+    current_num = get_current_target_number(LECTURE_FOLDER)
+    folder = os.path.join(LECTURE_FOLDER, f"Slide_{current_num}")
     os.makedirs(folder, exist_ok=True)
-    return folder
-
-def get_file_paths(slide_num):
-    folder = ensure_folder_exists(slide_num)
-    html_path = os.path.join(folder, f"slide_{slide_num}_page.html")
-    css_path = os.path.join(folder, f"slide_{slide_num}_design.css")
-    return html_path, css_path
+    
+    html_path = os.path.join(folder, f"slide_{current_num}_page.html")
+    css_path = os.path.join(folder, f"slide_{current_num}_design.css")
+    return html_path, css_path, current_num
 
 def save_html():
-    html_path, _ = get_file_paths(current_slide)
+    html_path, _, num = get_paths()
     content = pyperclip.paste()
     cleaned = clean_code(content, "html")
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(cleaned)
-    print(f"✅ [Alt+H] تم حفظ الكود المنسوخ حالياً في ملف HTML (الشريحة {current_slide})")
+    print(f"✅ [Alt+H] تم الحفظ في HTML -> Slide_{num}")
 
 def save_css():
-    _, css_path = get_file_paths(current_slide)
+    _, css_path, num = get_paths()
     content = pyperclip.paste()
     cleaned = clean_code(content, "css")
     with open(css_path, "w", encoding="utf-8") as f:
         f.write(cleaned)
-    print(f"✅ [Alt+C] تم حفظ الكود المنسوخ حالياً في ملف CSS (الشريحة {current_slide})")
+    print(f"✅ [Alt+C] تم الحفظ في CSS -> Slide_{num}")
 
 def clear_files():
-    html_path, css_path = get_file_paths(current_slide)
-    # فتح الملفات ومسح محتواها بالكامل (جعلها فارغة)
-    with open(html_path, "w", encoding="utf-8") as f:
-        f.write("")
-    with open(css_path, "w", encoding="utf-8") as f:
-        f.write("")
-    print(f"🗑️ [Alt+D] تم تفريغ محتويات ملفات الـ HTML والـ CSS للشريحة {current_slide} بنجاح!")
+    html_path, css_path, num = get_paths()
+    if os.path.exists(html_path):
+        with open(html_path, "w", encoding="utf-8") as f: f.write("")
+    if os.path.exists(css_path):
+        with open(css_path, "w", encoding="utf-8") as f: f.write("")
+    print(f"🗑️ [Alt+D] تم تفريغ ملفات Slide_{num}")
 
-def next_slide():
-    global current_slide
-    current_slide += 1
-    ensure_folder_exists(current_slide)
-    print("-" * 50)
-    print(f"➡️ [Alt+N] تم الانتقال وإنشاء مجلد الشريحة الجديدة: Slide_{current_slide}")
-    print("-" * 50)
+def create_new_slide():
+    """الاختصار ده وظيفته بس يفتح مجلد برقم جديد"""
+    current_max = get_current_target_number(LECTURE_FOLDER)
+    next_num = current_max + 1
+    new_folder = os.path.join(LECTURE_FOLDER, f"Slide_{next_num}")
+    os.makedirs(new_folder, exist_ok=True)
+    print(f"✨ [Alt+N] تم فتح شريحة جديدة برقم: Slide_{next_num}")
 
-# ربط الاختصارات بالدوال
+# ربط الاختصارات
 keyboard.add_hotkey('alt+h', save_html)
 keyboard.add_hotkey('alt+c', save_css)
 keyboard.add_hotkey('alt+d', clear_files)
-keyboard.add_hotkey('alt+n', next_slide) # اختصار مهم للانتقال للشريحة اللي بعدها
+keyboard.add_hotkey('alt+n', create_new_slide)
 
-print("🚀 نظام التحكم بالاختصارات جاهز ويعمل في الخلفية!")
-print(f"📁 الشريحة المستهدفة الآن: Slide_{current_slide}")
+print("🚀 نظام الاختصارات الذكي جاهز!")
 print("-" * 50)
-print("⌨️  انسخ الكود ثم اضغط Alt + H لحفظه في ملف HTML")
-print("⌨️  انسخ الكود ثم اضغط Alt + C لحفظه في ملف CSS")
-print("⌨️  اضغط Alt + D لتفريغ محتويات ملفات الشريحة الحالية")
-print("⌨️  اضغط Alt + N للانتقال لشريحة جديدة (بمجرد الانتهاء من الشريحة الحالية)")
-print("⌨️  اضغط Ctrl + C في هذه الشاشة لإيقاف السكربت تماماً")
+print("💡 كيف يعمل الآن:")
+print("1. لو عندك Slide_12، السكربت هيحفظ أوتوماتيك جواها.")
+print("2. لو ضغطت Alt+N، هيفتح لك Slide_13 ويبدأ يحفظ جواها.")
+print("3. لو مسحت Slide_13 يدوي، السكربت هيفهم ويرجع يحفظ في Slide_12.")
 print("-" * 50)
 
-# إبقاء السكربت قيد التشغيل
 keyboard.wait()

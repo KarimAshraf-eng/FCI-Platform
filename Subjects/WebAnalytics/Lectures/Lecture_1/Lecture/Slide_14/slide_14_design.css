@@ -1,0 +1,190 @@
+/* ========================================= */
+/* تصميم الشريحة 14 - أبعاد ثابتة لا تتشوه أبداً */
+/* ========================================= */
+.data-sources-pro {
+    display: flex;
+    flex-direction: column;
+    width: 880px; /* العرض الثابت الاحترافي */
+    margin: 0 auto;
+    direction: ltr; /* اتجاه إنجليزي لضمان الترتيب */
+    -webkit-text-size-adjust: 100%;
+    padding-top: 20px;
+}
+
+/* حاوية الأعمدة */
+.sources-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+}
+
+/* العمود الواحد */
+.source-column {
+    width: 400px; /* عرض ثابت لكل عمود لمنع الانكماش */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    padding: 30px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.source-column:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* الشريط العلوي الصغير (كما في الصورة الأصلية) */
+.top-accent-bar {
+    width: 160px;
+    height: 12px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+.blue-bar { background: #003a6b; }
+.orange-bar { background: #003a6b; } /* تم توحيد اللون كما في الصورة الأصلية */
+
+/* الأيقونات */
+.source-icon {
+    position: relative;
+    font-size: 5.5rem;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-overlay {
+    position: absolute;
+    bottom: -5px;
+    left: -10px;
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+/* العناوين */
+.source-title {
+    color: #f59e0b;
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* القوائم النصية */
+.source-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.source-list li {
+    font-size: 1.3rem;
+    color: #cbd5e1;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.source-list li:hover {
+    color: #fff;
+}
+
+/* الخط الفاصل في المنتصف */
+.vertical-divider {
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1), transparent);
+    margin: 0 10px;
+}
+
+/* ========================================= */
+/* التفاعلات واللوحات (موحدة مع الشريحة 13) */
+/* ========================================= */
+.action-buttons { 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    margin-top: 40px;
+    direction: rtl;
+}
+
+.action-btn { 
+    background: rgba(255, 255, 255, 0.05); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    color: #fff; 
+    padding: 12px 25px; 
+    border-radius: 30px; 
+    font-size: 1.25rem; 
+    font-weight: 700; 
+    cursor: pointer; 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover { transform: translateY(-3px); }
+.btn-blue { border-color: #00c6ff; color: #00c6ff; }
+.btn-blue:hover, .btn-blue.active-btn { background: #00c6ff; color: #000; }
+.btn-orange { border-color: #f59e0b; color: #f59e0b; }
+.btn-orange:hover, .btn-orange.active-btn { background: #f59e0b; color: #000; }
+
+.info-panel { 
+    display: none; 
+    margin-top: 25px; 
+    width: 880px; 
+    border-radius: 15px; 
+    padding: 30px; 
+    direction: rtl; 
+    text-align: right; 
+    animation: fadeIn 0.4s ease;
+}
+
+.info-panel.show-panel { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+.panel-blue { background: rgba(0, 198, 255, 0.05); border: 1px solid rgba(0, 198, 255, 0.3); }
+.panel-orange { background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.3); }
+
+.info-panel h3 { margin-bottom: 20px; font-size: 1.6rem; display: flex; align-items: center; gap: 10px; }
+.panel-blue h3 { color: #00c6ff; }
+.panel-orange h3 { color: #f59e0b; }
+
+.info-panel p { font-size: 1.2rem; line-height: 1.7; color: #e2e8f0; margin-bottom: 15px; }
+
+.panel-list {
+    list-style: none;
+    padding-right: 15px;
+}
+
+.panel-list li {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.panel-list li::before {
+    content: "•";
+    position: absolute;
+    right: -15px;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.panel-blue .panel-list li::before { color: #00c6ff; }
+.panel-orange .panel-list li::before { color: #f59e0b; }
+
+/* تأثير الترجمة للكلمات المركزية */
+.active-text {
+    color: #00c6ff !important;
+    text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+}
