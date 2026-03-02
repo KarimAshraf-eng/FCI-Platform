@@ -1,36 +1,31 @@
 // =========================================
-// المنطق الخاص بصفحة الملخص (Accordion Logic)
+// المنطق الخاص بصفحة الملخص (Scroll Reveal Animation)
 // =========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // تحديد جميع أزرار الأكورديون
-    const accordionBtns = document.querySelectorAll('.accordion-btn');
+    // تحديد جميع البطاقات التي تحمل كلاس reveal-card
+    const cards = document.querySelectorAll('.reveal-card');
 
-    accordionBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
-            // تحديد العنصر الأب (accordion-item) والمحتوى الداخلي
-            const item = this.parentElement;
-            const content = item.querySelector('.accordion-content');
+    // إعداد الـ Observer لمراقبة متى تظهر البطاقة في الشاشة
+    const observerOptions = {
+        root: null, // مراقبة نافذة المتصفح بالكامل
+        threshold: 0.15, // تفعيل الحركة عندما يظهر 15% من البطاقة
+        rootMargin: "0px 0px -50px 0px" // تشغيل الأنيميشن قبل الوصول لنهاية الشاشة بقليل
+    };
 
-            // إغلاق أي قسم آخر مفتوح (اختياري لترتيب الشاشة)
-            const activeItems = document.querySelectorAll('.accordion-item.active');
-            activeItems.forEach(activeItem => {
-                if (activeItem !== item) {
-                    activeItem.classList.remove('active');
-                    activeItem.querySelector('.accordion-content').style.maxHeight = null;
-                }
-            });
-
-            // تبديل حالة القسم الحالي (فتح / إغلاق)
-            item.classList.toggle('active');
-
-            if (item.classList.contains('active')) {
-                // إذا كان مفتوحاً، قم بتحديد الارتفاع المناسب بناءً على المحتوى الداخلي
-                content.style.maxHeight = content.scrollHeight + "px";
-            } else {
-                // إذا تم إغلاقه، قم بإرجاع الارتفاع للصفر
-                content.style.maxHeight = null;
+    const cardObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // إضافة كلاس 'visible' الذي يقوم بتشغيل الـ CSS Transition
+                entry.target.classList.add('visible');
+                // إيقاف مراقبة هذه البطاقة بعد ظهورها لمنع تكرار الحركة
+                observer.unobserve(entry.target);
             }
         });
+    }, observerOptions);
+
+    // ربط المراقب (Observer) بكل بطاقة
+    cards.forEach(card => {
+        cardObserver.observe(card);
     });
 });

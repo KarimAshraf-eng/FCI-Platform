@@ -1,192 +1,258 @@
 /* ========================================= */
-/* تصميم صفحة الملخص - (Pro Strict Layout) */
+/* تصميم الإنفوجرافيك التفاعلي - (Pro 880px) */
 /* ========================================= */
-.summary-pro-layout {
+.summary-infographic-layout {
     display: flex;
     flex-direction: column;
     width: 880px;
-    /* العرض الثابت لمنع التشوه */
+    /* العرض الثابت الصارم */
     margin: 0 auto;
     direction: rtl;
-    /* اتجاه عربي دائم للملخص */
     -webkit-text-size-adjust: 100%;
-    padding: 20px 0;
 }
 
 /* الترويسة */
 .summary-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .summary-title {
     color: #f59e0b;
-    font-size: 3.2rem;
+    font-size: 3rem;
     font-weight: 900;
     margin-bottom: 10px;
-    letter-spacing: 1px;
 }
 
 .summary-subtitle {
     color: #00c6ff;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 700;
     margin-bottom: 20px;
 }
 
 .summary-divider {
-    width: 150px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, #00c6ff, #f59e0b, transparent);
+    width: 100px;
+    height: 5px;
+    background: linear-gradient(90deg, #00c6ff, #f59e0b);
     margin: 0 auto;
-    border-radius: 2px;
+    border-radius: 3px;
 }
 
 /* ========================================= */
-/* تصميم الأكورديون (القوائم المنسدلة) */
+/* تصميم البطاقات (Cards) */
 /* ========================================= */
-.accordion-container {
+.infographic-container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    width: 100%;
+    gap: 40px;
+    /* مسافة كبيرة بين البطاقات لراحة العين */
 }
 
-.accordion-item {
-    background: rgba(17, 24, 39, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.accordion-item.active {
-    border-color: rgba(0, 198, 255, 0.4);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* أزرار العناوين */
-.accordion-btn {
-    width: 100%;
-    background: transparent;
-    border: none;
-    padding: 20px 25px;
+.info-card {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    text-align: right;
-    outline: none;
-    transition: background 0.3s ease;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    /* للإخفاء المبدئي للأنيميشن */
+    opacity: 0;
+    transform: translateY(40px);
 }
 
-.accordion-btn:hover {
-    background: rgba(255, 255, 255, 0.03);
+/* الكلاس الخاص بالأنيميشن من الجافاسكريبت */
+.info-card.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.btn-content {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.04);
 }
 
-.btn-content i {
-    font-size: 1.5rem;
-    width: 30px;
-    text-align: center;
+/* عكس الاتجاه (رسم يمين، نص يسار) */
+.info-card.reverse {
+    flex-direction: row-reverse;
 }
 
-.icon-blue {
+/* ========================================= */
+/* جزء النصوص */
+/* ========================================= */
+.info-text-side {
+    width: 60%;
+    padding: 0 20px;
+}
+
+.card-badge {
+    display: inline-block;
+    background: rgba(0, 198, 255, 0.15);
     color: #00c6ff;
-}
-
-.icon-orange {
-    color: #f59e0b;
-}
-
-.btn-content span {
-    color: #fff;
-    font-size: 1.4rem;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 1rem;
     font-weight: 800;
+    margin-bottom: 15px;
+    border: 1px solid rgba(0, 198, 255, 0.3);
 }
 
-.arrow-icon {
-    color: #64748b;
-    font-size: 1.2rem;
-    transition: transform 0.4s ease;
+.orange-badge {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    border-color: rgba(245, 158, 11, 0.3);
 }
 
-/* حالة الفتح للزر */
-.accordion-item.active .arrow-icon {
-    transform: rotate(180deg);
-    color: #00c6ff;
+.purple-badge {
+    background: rgba(139, 92, 246, 0.15);
+    color: #8b5cf6;
+    border-color: rgba(139, 92, 246, 0.3);
 }
 
-.accordion-item.active .btn-content span {
-    color: #00c6ff;
+.red-badge {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border-color: rgba(239, 68, 68, 0.3);
 }
 
-/* ========================================= */
-/* محتوى الأكورديون (النصوص الداخلية) */
-/* ========================================= */
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: rgba(0, 0, 0, 0.2);
+.info-text-side h3 {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 20px;
 }
 
-.accordion-content ul,
-.accordion-content p {
-    padding: 20px 30px 25px 50px;
-    /* مسافات مريحة للقراءة */
+.desc-text {
+    color: #cbd5e1;
+    font-size: 1.15rem;
+    margin-bottom: 15px;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 
-.content-desc {
-    color: #e2e8f0;
-    font-size: 1.25rem;
-    margin-bottom: 10px !important;
+.info-list li {
+    color: #cbd5e1;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    position: relative;
+    padding-right: 20px;
+}
+
+.info-list li::before {
+    content: "✦";
+    position: absolute;
+    right: 0;
+    color: #64748b;
+    font-size: 0.9rem;
+    top: 5px;
+}
+
+.info-list li strong {
+    color: #fff;
     font-weight: 700;
 }
 
-.summary-list {
-    list-style: none;
+/* ========================================= */
+/* جزء المشاهد الرسومية (Expressive Graphics) */
+/* ========================================= */
+.info-graphic-side {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.summary-list li {
-    color: #cbd5e1;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    margin-bottom: 12px;
+.scene-circle {
     position: relative;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.summary-list li::before {
-    content: "■";
+.main-icon {
+    font-size: 5.5rem;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+    z-index: 2;
+}
+
+.float-icon {
     position: absolute;
-    right: -20px;
-    color: #f59e0b;
-    font-size: 0.8rem;
-    top: 6px;
+    font-size: 2rem;
+    z-index: 3;
+    background: #111827;
+    padding: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-.summary-list li strong {
-    color: #fff;
-    font-weight: 800;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-left: 5px;
+/* مواقع الأيقونات العائمة */
+.top-right {
+    top: 10px;
+    right: 10px;
 }
 
-/* القوائم المتداخلة */
-.summary-list ul {
-    padding: 10px 30px 0 0;
+.top-left {
+    top: 10px;
+    left: 10px;
 }
 
-.summary-list ul li::before {
-    content: "○";
-    color: #00c6ff;
-    font-size: 0.9rem;
+.bottom-right {
+    bottom: 10px;
+    right: 10px;
+}
+
+.bottom-left {
+    bottom: 10px;
+    left: 10px;
+}
+
+/* ========================================= */
+/* الحركات (Animations) */
+/* ========================================= */
+.float-anim {
+    animation: floatUpDown 4s ease-in-out infinite;
+}
+
+.pulse-anim {
+    animation: pulseGlow 3s infinite alternate;
+}
+
+@keyframes floatUpDown {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+    0% {
+        filter: drop-shadow(0 0 10px currentColor);
+        transform: scale(0.95);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 25px currentColor);
+        transform: scale(1.05);
+    }
 }
